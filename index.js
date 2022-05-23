@@ -1,11 +1,10 @@
 import "dotenv/config";
-import TelegramBot from "node-telegram-bot-api";
+import { Telegraf, Markup } from "telegraf";
 
-const bot = new TelegramBot(process.env.BOT_TOKEN, { polling: true });
+const bot = new Telegraf(process.env.BOT_TOKEN);
 
-bot.on("message", (msg) => {
-  const chatId = msg.chat.id;
-
-  bot.sendMessage(chatId, "Hello");
-  console.log(msg);
+bot.start(async (ctx) => {
+  await ctx.reply("Welcome", Markup.keyboard([["Look at progress"]]));
 });
+
+bot.launch();
