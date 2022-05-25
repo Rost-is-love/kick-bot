@@ -10,5 +10,8 @@ module.exports = {
   },
   rules: {
     quotes: [2, "double"],
+    "object-curly-newline": "off",
+    "import/prefer-default-export": "off",
+    "import/extensions": "off",
   },
 };
