@@ -12,6 +12,14 @@ bot.use(stage.middleware());
 bot.hears("Progress", (ctx) => ctx.scene.enter("progressScene"));
 bot.hears("Stats", (ctx) => ctx.scene.enter("statsScene"));
 
+bot.telegram.sendMessage(
+  process.env.MY_CHAT_ID,
+  "Did you learn words in Anki today?",
+  Markup.inlineKeyboard([
+    [Markup.button.callback("Yes", "yes"), Markup.button.callback("No", "no")],
+  ]),
+);
+
 bot.start(async (ctx) => {
   try {
     await ctx.reply(
