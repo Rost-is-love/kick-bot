@@ -2,6 +2,11 @@ import "dotenv/config";
 import { Telegraf, Markup, Scenes, session } from "telegraf";
 import { progressScene } from "./scenes/progress.js";
 import { statsScene } from "./scenes/stats.js";
+import { setTimer } from "./modules/timer.js";
+
+const timerTypes = {
+  primary: "primary",
+};
 
 const bot = new Telegraf(process.env.BOT_TOKEN);
 
@@ -12,14 +17,6 @@ bot.use(stage.middleware());
 bot.hears("Progress", (ctx) => ctx.scene.enter("progressScene"));
 bot.hears("Stats", (ctx) => ctx.scene.enter("statsScene"));
 
-bot.telegram.sendMessage(
-  process.env.MY_CHAT_ID,
-  "Did you learn words in Anki today?",
-  Markup.inlineKeyboard([
-    [Markup.button.callback("Yes", "yes"), Markup.button.callback("No", "no")],
-  ]),
-);
-
 bot.start(async (ctx) => {
   try {
     await ctx.reply(
@@ -28,6 +25,7 @@ bot.start(async (ctx) => {
         .oneTime()
         .resize(),
     );
+    setTimer(bot, timerTypes.primary);
   } catch (error) {
     console.error(error);
   }
