@@ -14,8 +14,8 @@ const stage = new Scenes.Stage([progressScene, statsScene]);
 bot.use(session());
 bot.use(stage.middleware());
 
-bot.hears("Progress", (ctx) => ctx.scene.enter("progressScene"));
-bot.hears("Stats", (ctx) => ctx.scene.enter("statsScene"));
+bot.hears("Progress", (ctx) => ctx.scene.enter("progressWizard"));
+bot.hears("Stats", (ctx) => ctx.scene.enter("statsWizard"));
 
 bot.start(async (ctx) => {
   try {
