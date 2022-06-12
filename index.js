@@ -1,14 +1,9 @@
 import "dotenv/config";
-import { Telegraf, Markup, Scenes, session } from "telegraf";
+import { Markup, Scenes, session } from "telegraf";
+import { bot } from "./bot.js";
+import { setTimer } from "./modules/timer.js";
 import { progressScene } from "./scenes/progress.js";
 import { statsScene } from "./scenes/stats.js";
-import { setTimer } from "./modules/timer.js";
-
-const timerTypes = {
-  primary: "primary",
-};
-
-const bot = new Telegraf(process.env.BOT_TOKEN);
 
 const stage = new Scenes.Stage([progressScene, statsScene]);
 bot.use(session());
@@ -25,7 +20,7 @@ bot.start(async (ctx) => {
         .oneTime()
         .resize(),
     );
-    setTimer(bot, timerTypes.primary);
+    setTimer("primary");
   } catch (error) {
     console.error(error);
   }

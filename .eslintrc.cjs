@@ -13,5 +13,6 @@ module.exports = {
     "object-curly-newline": "off",
     "import/prefer-default-export": "off",
     "import/extensions": "off",
+    "consistent-return": "off",
   },
 };
