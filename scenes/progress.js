@@ -10,8 +10,6 @@ startStep.on("text", async (ctx) => {
   } catch (error) {
     console.error(error);
   }
-
-  return undefined;
 });
 
 export const progressScene = new Scenes.WizardScene("progressWizard", startStep);

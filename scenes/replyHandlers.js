@@ -3,7 +3,7 @@ import { setTimer } from "../modules/timer.js";
 
 export const handleYesPrimary = () => {
   // TODO: add database
-  console.log("put date to db");
+  setTimer("primary");
 };
 
 export const handleNoPrimary = () => {
@@ -13,8 +13,10 @@ export const handleNoPrimary = () => {
 
 export const handleYesSecondary = () => {
   // TODO: add database
+  setTimer("primary");
 };
 
 export const handleNoSecondary = () => {
   // TODO: add database
+  setTimer("primary");
 };
